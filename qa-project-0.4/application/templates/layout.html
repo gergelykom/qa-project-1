@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>New Species UK - {{ title }}</title>
+    </head>
+    <body>
+        <h1 style='text-align:center'>New Species UK - {{ title }}</h1>
+        <a href = '{{ url_for("home") }}'>Home</a> <br>
+        <a href = '{{ url_for("create") }}'>Upload your discovery</a> <br>
+        
+        {% block body %}
+        {% endblock body %}
+       <style>
+           h1 {text-align:center;
+           background:blanchedalmond;}
+           h1:hover {color: blanchedalmond;
+           background: black;
+           transition-duration: 0.6s;}
+           body {background: lemonchiffon;}
+           
+
+       </style> 
+            
+        
+    </body>
+</html>
