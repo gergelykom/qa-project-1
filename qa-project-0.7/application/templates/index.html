@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<h2>Unconfirmed Species</h2>
+{% for task in all_species %}
+    {% if task.confirmed == False %}
+        {{ task.description }}
+<br>
+
+        <br>
+        {{ task.date_created }}
+        <br>
+        <form action = '{{ url_for("update", id=task.id) }}'>
+        <input type=submit value='Change Proposed Name'>
+        </form>
+        <form action = '{{ url_for("delete", id=task.id) }}'>
+            <input type=submit value='Delete'>
+            </form>
+<p>Your proposition is under evaluation by our experts!</p>
+            <form action = '{{ url_for("confirm", id=task.id) }}'>
+                <input type=submit value='Confirm'>
+                </form>
+        <br>
+        
+    {% endif %}
+{% endfor %}
+
+<h2>Confirmed Species</h2>
+{% for task in all_species %}
+    {% if task.confirmed== True %}
+        {{ task.description }}
+        
+
+        <br>
+        {{ task.date_created }}
+        
+        
+
+        <br>
+        <form action = '{{ url_for("update", id=task.id) }}'>
+        <input type=submit value='Change Proposed Name'>
+        </form>
+    </form>
+    <form action = '{{ url_for("delete", id=task.id) }}'>
+        <input type=submit value='Delete'>
+        </form>
+        
+        <form action = '{{ url_for("unconfirmed", id=task.id) }}'>
+            <input type=submit value='Unconfirmed'>
+            </form>
+    {% endif %}
+{% endfor %}
+
+{% endblock body %}
