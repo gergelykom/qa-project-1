@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block body %}
+<br> <br>
+<form action = '' method= 'POST'>
+{{ form.hidden_tag() }}
+{{ form.description.label }} {{ form.description }} <br>
+{{ form.submit }}
+<br>
+<p>Add your image</p>
+<input type="file" accept="image/*" onchange="loadFile(event)">
+<img id="out"/>
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('out');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) 
+    }
+  };
+</script>
+
+
+</form>
+
+{% endblock body %}
